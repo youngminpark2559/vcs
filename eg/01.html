@@ -1,0 +1,386 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 25px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 80px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:1.6em
+}
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$','$'], ["<br/>(","<br/>)"] ],
+                   displayMath: [ ['$$','$$'], ["<br/>[","<br/>]"] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+@Chapter.<br/>
+지옥에서 온 Git : git init.<br/>
+<br/>
+@<br/>
+version 관리 하고 싶은 folder 를 git 에게 알려주고 initialize 해야한다.<br/>
+폴더에 들어가서.<br/>
+git init.<br/>
+<br/>
+@<br/>
+이렇게 하면 .git folder 가 만들어진다.<br/>
+version 관리를 하면 여러 정보가 생성되는데 이 folder 에 저장된다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git : git add.<br/>
+<br/>
+@<br/>
+vim f1.txt : vim 으로 f1.txt 편집한다.<br/>
+i 를 눌러 insert mode 로 들어간다.<br/>
+esc 를 눌러 default mode 로 나온다.<br/>
+:wq 저장후 프로그램 종료.<br/>
+<br/>
+@<br/>
+cat f1.txt.<br/>
+file 내용 보기.<br/>
+<br/>
+@<br/>
+git status.<br/>
+untracked file : version 관리가 되는 folder 안에 존재하지만 git 이 version 관리를 위해 추적은 하고 있지 않다.<br/>
+<br/>
+git add f1.txt : 관리하는 목록에 추가한다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git : 버전 만들기 (commit).<br/>
+<br/>
+@<br/>
+version 기록하는 사람을 명시하는 명령은 다음과 같다.<br/>
+git config --global user.name Name.<br/>
+git config --global user.email Email.<br/>
+<br/>
+이 정보를 포함하는 버전이 된다.<br/>
+누가 작업했는지 알수 있게 된다.<br/>
+<br/>
+@<br/>
+git commit.<br/>
+vim 이 실행된다.<br/>
+commit message 작성하고 commit 하면 version 이 생성된것이다.<br/>
+<br/>
+@<br/>
+git log 로 commit message, 여러 정보를 확인.<br/>
+<br/>
+@<br/>
+내용을 수정한다.<br/>
+git status 하면 modified 를 볼 수 있다.<br/>
+이 상태에서 git commit 하면 안된다.<br/>
+f1.txt file 을 git add f1.txt 를 실행 시켜서 git 의 관리목록에 추가해야한다.<br/>
+새로운 파일이 생겼을때 이파일의 version 관리를 최초 명령할때도 git add 를 쓰고.<br/>
+버전관리가 되고 있는 파일을 수정하고 새로운 버전을 생성할 때도 git add 를 쓴다.<br/>
+<br/>
+git commit 실행한다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT : git stage area.<br/>
+<br/>
+@<br/>
+cp fi.txt f2.txt.<br/>
+내용을 카피해서 파일을 만든다.<br/>
+<br/>
+git add f2.txt 를 해서 version manage 를 시작한다.<br/>
+<br/>
+@<br/>
+내용을 수정하고 왜 바로 commit 하지 않고 먼저 add 를 하는가?.<br/>
+소스 수정하다보면 commit 시기를 놓칠 때가 있다.<br/>
+commit 하나는 하나의 작업을 담고있는 것이 이상적이다.<br/>
+commit 시기를 놓치면 하나의 commit 이 큰 작업을 담고있게 된다.<br/>
+이때 add 를 통해 commit 하고 싶은 file 만 commit 을 할수 있다.<br/>
+<br/>
+@<br/>
+두개의 파일중 하나만 git add f1.txt 해보자.<br/>
+changes to be commited 를 볼 수있다.<br/>
+초록색 modified 를 볼 수 있다.<br/>
+<br/>
+changes not staged for commit 을 볼 수 있다.<br/>
+빨간색 modified 를 볼 수 있다.<br/>
+<br/>
+이 상태에서 git commit 을 하면 f1.txt 를 새로운 버전에 포함된다. f2.txt 는 포함 안된다.<br/>
+git add 를 통해 선택적으로 파일을 commit 할 수 있다.<br/>
+<br/>
+@<br/>
+add 가 적용되어 commit(for a snapshot of code on a stage) 을 앞두고 있는 단계를 stage area 라고 한다.<br/>
+<br/>
+@<br/>
+commit 이 되어 결과가 저장되는 곳은 repository 이다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT : 변경 사항 확인하기 (log & diff).<br/>
+<br/>
+@<br/>
+만들어 놓은 version 의 효용성은 크게 2가지이다.<br/>
+1. version 별로 차이점을 알수있고, 과거의 특성 시점을 확인 할 수 있다.<br/>
+1. 과거의 코드 상태로 돌아갈 수 있다.<br/>
+<br/>
+@<br/>
+git log 에 option 을 줄 수 있다.<br/>
+git log -p commit 끼리 code 차이점을 두 commit 정보 가운데에 줄력한다.<br/>
+<br/>
++++ b/f1.txt version 4 를 가르킴.<br/>
+--- a/f1.txt version 3 을 가르킴.<br/>
+<br/>
++f1.txt : 2.<br/>
+version 4 에서의 내용.<br/>
+<br/>
+-source : 2.<br/>
+version 3 에서의 내용.<br/>
+<br/>
+--- /dev/null.<br/>
+이전 version 의 내용 : 파일이 없었음.<br/>
++++ b/f2.txt.<br/>
+위의 version 의 다음 version 의 내용.<br/>
+<br/>
+<br/>
+@<br/>
+git log hash-value-of-commit.<br/>
+위 commit 을 포함해 이전의 모든 commit 을 보여줌.<br/>
+<br/>
+@<br/>
+git diff hash-value-of-commit1..hash-value-of-commit2.<br/>
+두 code 차이점을 보여줌.<br/>
+<br/>
+@<br/>
+코드 수정저장하고 git diff 하면 방금 수정 내역을 보여준다.<br/>
+commit 전에 last review 할때 유용하다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT : 과거로 돌아가기 (reset).<br/>
+<br/>
+@<br/>
+최신의 상태가 commit 5 일때 commit 3 상태로 돌아가고 싶다.<br/>
+크게 두가지 방법이 있다.<br/>
+두가지는 비슷하면서 다르다.<br/>
+위험한 작업을 할때는 ls -al 치면 나오는 working directory file 을 copy 하면 좋다.<br/>
+1. reset.<br/>
+쉬운 방법.<br/>
+5에서 3으로 가고 싶다, 즉, 5와 4를 삭제하고 싶다.<br/>
+git reset hash-value-of-commit3 --hard.<br/>
+하지만, git 은 정보를 왠만해서는 삭제하지않는다.<br/>
+위 두 정보를 삭제한것처럼 보이지만 실제로는 남아있어서 필요하면 복구할 수 있다.<br/>
+remote repository 를 이용해 협업을 할 수 있다.<br/>
+내 remote repository 의 version 들을 다른 곳에 공유할수 있다.<br/>
+공유한 이후에는 reset 을 하면 안된다.<br/>
+reset 은 공유하기전에 내 컴퓨터에 있는 혼자 작업할 때 reset 을 써야한다.<br/>
+--hard 는 위험한 방식이고 soft 와 같은 다른 option 도 있다.<br/>
+1. revert.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT - 스스로 공부하는 법.<br/>
+<br/>
+@<br/>
+파일을 수정할 때마다 add, writing commit message, commit 하는것은 번거롭다.<br/>
+git commit --help : commit 명령에 대한 도움말을 본다.<br/>
+<br/>
+git commit -a or -all.<br/>
+수정하거나 삭제한 파일을 add 과정이 자동으로 진행되어 생략되고 commit message 쓰는 곳으로 간뒤 commit 하면 자동으로 stage 에 올린다.<br/>
+<br/>
+commit message 쓰는 창에 가는 것도 귀찮을때 다음 방법을 쓴다.<br/>
+먼저 코드 내용수정.<br/>
+git commit -am "commit message".<br/>
+inline 에서 add, writing commit message, commit 을 한번에 한다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT : 원리 - 분석도구 gistory 소개.<br/>
+ .<br/>
+@<br/>
+pip install gistory.<br/>
+<br/>
+@<br/>
+.git folder 가 위치하는 working directory 로 이동한다.<br/>
+gistory.<br/>
+port number copy 후 localhost:port 로 들어간다.<br/>
+그러면, .git 내용을 탐색할 수 있다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT : 원리 - git add.<br/>
+<br/>
+@<br/>
+vim f1.txt 로 file 을 만든다.<br/>
+git add f1.txt 로 git 에게 file의 version 을 track 하도록 한다.<br/>
+change 를 gistory 에서 본다.<br/>
+index file 이 change 되고 objects/78/98...85 added 되었다.<br/>
+added 된 objects/78/98...85 file 안에는 f1.txt file 의 contents 가 담겨있다.<br/>
+contents a 가 담겨있는 file 이름인 f1.txt 는 위에서 added 된 file 에 담겨있지 않다.<br/>
+이 정보는 index file 안에 다음과 같은 format 으로 적히게 된다.<br/>
+7898...85 f1.txt.<br/>
+의미는 f1.txt file 의 contents 는 7898...85 file 에 담겨있다 이다.<br/>
+<br/>
+objects folder 안에 있는 file 을 object 라고 부른다.<br/>
+<br/>
+@<br/>
+vim t2.txt 으로 another file f2.txt 를 create 한다.<br/>
+git add f2.txt 을 한다.<br/>
+see gistory.<br/>
+index file 이 변했다.<br/>
+objects/b6/80...46 이 created 되었다.<br/>
+changed index file 을 열어보면 다음과 같은 format 으로 작성되어있다.<br/>
+7898..85 f1.txt.<br/>
+b680..46 f2.txt.<br/>
+<br/>
+@<br/>
+create a new file f3.txt which has a copied contents from f1.txt by using cp f1.txt f3.txt.<br/>
+and then, command git add f3.txt.<br/>
+and then, reload gistory.<br/>
+I can see 2 changed files.<br/>
+one is index file, and another is objects/78/98...85 which exists before but just is updated.<br/>
+try click and you can see contents a in it.<br/>
+and then try explore index file and you can see the contents of it as the following format of file shown below.<br/>
+7898...85 f1.txt.<br/>
+b680...46 f2.txt.<br/>
+7898...85 f3.txt.<br/>
+<br/>
+you can get the meaning of two files(f1.txt, f3.txt) indicating same object 7898...85.<br/>
+<br/>
+git manages as the same object file like a 7898...85 only if the contents is identical from two separate files even though the file names are different.<br/>
+<br/>
+no matter how you have numorous files for example 10,000 files and even if size of each file is huge, if the contents is identical in all files, git will notate only file name like f1.txt, ..., f10000.txt, those 10,000 files will indicate same object file, so that, it can prevent the probability of huge duplicate.<br/>
+<br/>
+everyone will get the same object name 7898...85 if each one would create a file with contents a in it.<br/>
+this is done by cryptographic hash function like SHA256.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT : 원리 - objects 파일명의 원리.<br/>
+<br/>
+@<br/>
+contents 가 같으면 file 이 가리키는 object 의 이름이 같다.<br/>
+<br/>
+add 하면 그 파일의 contents 를 본다.<br/>
+contents 가 a 이면 이 정보와 몇가지 부가적 정보를 추가해서 이것을 압축한다.<br/>
+그리고 압축한 결과를 SHA1 처리하고 나온 hash value 로 folder 와 file 을 objects directory 안에 만든다.<br/>
+그리고 다시 contents a 를 그 file 안에 저장한다.<br/>
+그리고 index file 에 hash value(object name) 과 실제 file name f1.txt 를 connect 시켜놓는다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT : 원리 - commit의 원리.<br/>
+<br/>
+@<br/>
+content of file 뿐만 아니라 commit 정보(author, email, commit message) 도 objects 안의 file 에 들어간다.<br/>
+tree 옆에 object 가 link 되어 있다.<br/>
+이걸 클릭하면 해당하는 version 의 file name 과 hash value object 가 list 로 저장되어있다.<br/>
+445...45 f1.txt.<br/>
+231...27 f2.txt.<br/>
+445...45 f3.txt.<br/>
+<br/>
+@<br/>
+f2 의 contents 를 수정하고 version 을 한번 더 만들어본다.<br/>
+git add f2.txt.<br/>
+그러면, index, objects 에 영향을 준다.<br/>
+<br/>
+git commit.<br/>
+그런다음 objects directory 를 클릭해본다.<br/>
+그러면 parent 와 이것이 link 를 볼수 있다.<br/>
+이것을 클릭하면 이 commit 의 이전 commit 을 볼 수 있다.<br/>
+<br/>
+중요한점은 첫번째 commit 과 두번째 commit 의 tree 의 hash value object link 가 다르다.<br/>
+<br/>
+첫번째 tree 를 클릭하면.<br/>
+445...45 f1.txt.<br/>
+231...27 f2.txt.<br/>
+445...45 f3.txt.<br/>
+을 볼수 있고 f2 의 object 를 클릭하면 z 라는 content 를 담고있는 file 이다.<br/>
+<br/>
+두번째 commit 의 tree 을 클릭하면 마찬가지로.<br/>
+445...45 f1.txt.<br/>
+231...27 f2.txt.<br/>
+445...45 f3.txt.<br/>
+을 볼수있고 f2 를 클릭하면 link 를 볼수있다 이 링크가 가르키는 file 은 y, z 를 저장하고 있다.<br/>
+<br/>
+commit 에는 주요한 정보 두가지가 있다.<br/>
+1. 이전 commit (parent).<br/>
+1. commit 이 일어난 시점의 working directory 에있는 file 의 이름 f1.txt 과 이 file 의 content 를 담고있는 file 의 link 정보를 담고있다.<br/>
+<br/>
+각각의 version 마다 서로 다른 tree 를 가르키고 있다.<br/>
+이 tree 에는 file name(f1.txt) file 에 담겨있는 contents 를 담고있는 object 가 link 되어있다.<br/>
+따라서, version 에 적혀있는 tree 를 통해서 version 이 만들어진 시점의 working directory 에 대한 상태를 explore 할수있다.<br/>
+<br/>
+In other words, 각각의 version 으로 snapshot 을 만들고 이것들을 tree data structure 를 통해서 가지고 있다.<br/>
+<br/>
+@<br/>
+objects 안에 들어가는 file(object) 은 크게 3가지이다.<br/>
+blob object : contents of file 을 저장한다.<br/>
+tree object :.<br/>
+34..22 f1.txt.<br/>
+92..93 f2.txt.<br/>
+34..22 f3.txt.<br/>
+commit object : commit 에 대한 정보를 담고있는 object.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 GIT : 원리 - status의 원리.<br/>
+<br/>
+@<br/>
+in a folder where there is nothing on the stage, when you execute git status,.<br/>
+you will see the following message "nothing to commit, working directory clean".<br/>
+git 은 어떻게 nothing to commit 인지 알게되는지 알아보자.<br/>
+<br/>
+@<br/>
+index file 을 살펴봤었다.<br/>
+그리고 최신 commit object 도 살펴봤다.<br/>
+이 둘을 비교하면 commit 할게 있는지 없는지 알 수 있다.<br/>
+index 에는 다음과 같은 내용이 담겨있다.<br/>
+28..83 d1/f1.txt.<br/>
+84..43 f1.txt.<br/>
+58..21 f2.txt.<br/>
+84..43 f3.txt.<br/>
+<br/>
+그리고 latest commit 을 click 해서 tree link 를 click 해 본다.<br/>
+28..83 d1/f1.txt.<br/>
+84..43 f1.txt.<br/>
+58..21 f2.txt.<br/>
+84..43 f3.txt.<br/>
+이런식으로 index file 의 내용과 동일하다면 commit 할 것이 없다고 판단할 수 있다.<br/>
+<br/>
+@<br/>
+f2.txt 를 수정했다고 가정하자.<br/>
+그리고 add 를 하고 content of file 로 hash 하면 different value from privious hash value in the index file 가 도출된다.<br/>
+이전에 index file 에 저장되어있던 f2.txt 가 link 하고 있는 object link 가 다르다면 commit 할 것이 있다고 판단 할 수 있다.<br/>
+<br/>
+@<br/>
+index 에있는.<br/>
+33..25 f2.txt 의 object 내용과.<br/>
+<br/>
+가장 최신 commit 에서 tree 가 가르키는 object 안의 내용에 있는.<br/>
+98..31 f2.txt.<br/>
+의 내용이 다르다면 git 은 현재 최신의 f2.txt 은 add 명령어가 사용되어 index 가 수정되었고 commit 대기 상태 이다 라는 사실을 알 수가 있다.<br/>
+<br/>
+그리고 commit 이 이루어 지면 위에서 달랐던 file 들이 동일해지면서 commit 할게 없는 상태가 된다.<br/>
+<br/>
+@<br/>
+code 를 작업하는 working directory 에서 add 를 하면 그 내용들이 .git folder 에 있는 index file 에 등록된다.<br/>
+commit 을 하면 index file 에 등록된 내용이 objects 안에 저장된다.<br/>
+   </BODY>
+</HTML>
