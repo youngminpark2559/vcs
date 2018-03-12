@@ -382,5 +382,652 @@ index 에있는.<br/>
 @<br/>
 code 를 작업하는 working directory 에서 add 를 하면 그 내용들이 .git folder 에 있는 index file 에 등록된다.<br/>
 commit 을 하면 index file 에 등록된 내용이 objects 안에 저장된다.<br/>
+      
+@Chapter.<br/>
+지옥에서 온 Git - branch 만들기.<br/>
+<br/>
+@<br/>
+git init.<br/>
+current directory 에 .git folder 를 포함하는 repository 가 create 된다.<br/>
+<br/>
+@<br/>
+git commit -am "commit message"<br/>
+자동으로 add commit 하는건데 한번도 add 하지 않은 file 에 이 command 를 적용하면 자동으로 add 가 되지 않는다.<br/>
+<br/>
+@<br/>
+원래 code 를 변경하지 않으면서 client 를 위해 customizing 할때 branch 이 useful 하다.<br/>
+<br/>
+@<br/>
+git branch : show list of branch.<br/>
+* master : 현재 당신이 master 라는 branch 를 쓰고 있다.<br/>
+git 을 사용하는 순간부터 default branch 를 사용하게 되어있는데 master 라고 불린다.<br/>
+<br/>
+@<br/>
+git branch exp.<br/>
+<br/>
+@<br/>
+git branch.<br/>
+exp.<br/>
+*master.<br/>
+<br/>
+current master 를 쓰고 있기때문에 * 가 master 앞에 있다.<br/>
+<br/>
+@<br/>
+git checkout exp : exp branch 에 checkout 해서 들어간다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - branch 정보확인.<br/>
+<br/>
+@<br/>
+git log --branches : 현재 checkout 되어있는 branch 뿐만아니라 repository 에 있는 모든 branch 를 보여준다.<br/>
+<br/>
+git log --branches --decorate.<br/>
+(master) master branch 의 latest commit 을 표시한다.<br/>
+<br/>
+(HEAD -> exp).<br/>
+exp 의 latest commit 이 4 임을 표시한다.<br/>
+HEAD : exp branch 에 checkout 되어있다.<br/>
+<br/>
+q 를 눌러서 나간다.<br/>
+<br/>
+@<br/>
+git log --branches --decorate --graph.<br/>
+빨간색으로 줄이 생긴다.<br/>
+효용은 master branch 에서 내용이 바뀔때 줄의 효용이 생긴다.<br/>
+<br/>
+@<br/>
+git log : 현재 branch 의 log 만 보여준다.<br/>
+git log --branches : 모든 branch 의 log 를 보여준다.<br/>
+<br/>
+@<br/>
+master, exp 쭉 올라가보면 2를 담는 파일의 commit 을 만난다. 공통의 조상이다.<br/>
+<br/>
+@<br/>
+git log --branches --decorate --graph --oneline.<br/>
+한줄로 간결하게 전체적으로 branch 흐름을 보여준다.<br/>
+<br/>
+@<br/>
+source tree 깔려있으면 current directory 에서 stree 를 run 하면 current directory 가 source tree 에서 나타난다.<br/>
+<br/>
+@<br/>
+git log master..exp.<br/>
+master 와 exp 의 차이가 뭐냐.<br/>
+matter 에는 없고 exp 에 있는걸 보여준다.<br/>
+<br/>
+@<br/>
+git log -p master..exp.<br/>
+code 의 차이까지 보여준다.<br/>
+<br/>
+@<br/>
+gid diff master..exp.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - branch 병합.<br/>
+<br/>
+@<br/>
+master 에서 branch 했던 exp 를 작업을 하고 다시 master 로 merge 하는 방법.<br/>
+먼저 master 로 checkout 을 한다.<br/>
+그리고 git merge exp 를 한다.<br/>
+merge message window 에서 :wq 한다.<br/>
+<br/>
+@<br/>
+이제 master 는 두개의 parent commit 를 갖는다.<br/>
+하나는 원래 master branch 의 latest commit.<br/>
+또 하나는 exp branch 에서의 merge 하기 직전의 latest commit.<br/>
+<br/>
+@<br/>
+master 에 있고 exp 에 없는 것을 가져오자.<br/>
+git checkout exp.<br/>
+git merge master.<br/>
+<br/>
+@<br/>
+exp 를 지워도 된다.<br/>
+git branch -d exp.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - branch 수련.<br/>
+<br/>
+@<br/>
+branch.<br/>
+fast forward branch.<br/>
+not fast forward branch.<br/>
+<br/>
+@<br/>
+issue 하나를 수정하기 위해 branch 를 만든다.<br/>
+git checkout -b iss53.<br/>
+다음 두 행을 -b 를 씀으로써 한번에 하는 명령어.<br/>
+git branch iss53 : branch iss53 create.<br/>
+git checkout iss53.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - stash.<br/>
+<br/>
+@<br/>
+stash : 감추다, 숨겨두다.<br/>
+branch 에서 작업을 하는 중에, 작업이 끝나지 않았는데, 다른 branch 로 checkout 해서 다른 작업을 해야할 때가 있을 수 있다.<br/>
+<br/>
+unfinished task 를 commit 하기 좀 그렇고, commit 을 안하면 checkout 할 수 없고 하는 문제가 생길 수 있다.<br/>
+<br/>
+이때, stash 를 쓰면 작업했던 내용을 어딘가에 숨겨놓을 수 있다.<br/>
+<br/>
+@<br/>
+git init.<br/>
+vim f1.txt.<br/>
+git add f1.txt.<br/>
+git commit -m 1.<br/>
+<br/>
+git chceckout - exp : branch create + checkout.<br/>
+<br/>
+exp branch 에서 f1 수정 중에서 git checkout master 하면 exp 에서 수정한 내용이 master branch 에도 영향을 준다.<br/>
+<br/>
+@<br/>
+git stash (save).<br/>
+saved working directory and index state WIP on exp : 91523e45 1.<br/>
+<br/>
+@<br/>
+다시 살리는 방법.<br/>
+git stash apply.<br/>
+<br/>
+@<br/>
+stash list 보기.<br/>
+git stash list.<br/>
+<br/>
+@<br/>
+git reset --hard 를 해도.<br/>
+git stash apply 를 하면 다시 살아난다.<br/>
+stash list 는 explicit 하게 삭제 하지 않으면 항상 살아있다.<br/>
+<br/>
+@<br/>
+stash list 가 복수개일때.<br/>
+git stash apply 는 가장 위에 있는 최근 stash 를 적용한다.<br/>
+<br/>
+@<br/>
+git stash drop 은 가장 latest stash 를 삭제한다.<br/>
+<br/>
+@<br/>
+이렇게 latest stash 를 지운뒤.<br/>
+git stash apply; git stash drop; 을 하면 한번에 할 수 있다.<br/>
+<br/>
+@<br/>
+git stash 로 임시저장하고.<br/>
+git stash apply; git stash drop; 으로 적용하고 삭제할수 있다.<br/>
+한번에 하려면 git stash pop 을 쓴다.<br/>
+<br/>
+@<br/>
+add 하지 않아서 tracked 되지 않고 있는 file 에 대해서는 stash 를 쓸 수 없다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원리 : branch.<br/>
+<br/>
+@<br/>
+git init.<br/>
+git folder 에 file 들이 생성된다.<br/>
+HEAD file 의 내용 refs/heads/master 이 적혀있다.<br/>
+<br/>
+refs/heads/master file 은 아직 존재하지 않는 상태이다.<br/>
+<br/>
+@<br/>
+vim f1.txt.<br/>
+contents : a.<br/>
+<br/>
+git add f1.txt.<br/>
+<br/>
+git commit -m "1"<br/>
+<br/>
+go to gistory and you can see refs/heads/master.<br/>
+내용은 object link 이다.<br/>
+이걸 click 해보자.<br/>
+<br/>
+방금 commit 된 걸 가르키는 id 였다.<br/>
+<br/>
+@<br/>
+vim f1.txt.<br/>
+a, b.<br/>
+<br/>
+git commit -am "2"<br/>
+<br/>
+@<br/>
+go to gistory.<br/>
+refs/heads/master file 이 바뀌어있다.<br/>
+<br/>
+object link 를 click 해 보자.<br/>
+그럼 이 object link 가 방금 commit 을 가리키고 있다는 걸 알수있다.<br/>
+<br/>
+@<br/>
+summary.<br/>
+folder .git 만들면 head file 생긴다.<br/>
+head 는 master file 가르킨다.<br/>
+master 는  latest commit 을 가리킨다.<br/>
+<br/>
+@<br/>
+git log 를 했을때.<br/>
+commit list 를 보여주는데 최신순으로 보여줄수 있는 이유가 git 이 head file 을 가지고 있기 때문이다.<br/>
+<br/>
+@<br/>
+branch 는 refs directory 밑에 있는 file 을 의미한다고 볼 수 있다.<br/>
+<br/>
+@<br/>
+git branch exp.<br/>
+두개의 file 이 바뀌었다.<br/>
+logs/refs/heads/exp.<br/>
+refs/heads/exp.<br/>
+<br/>
+refs/heads/exp 이것을 살펴보자.<br/>
+click 하면 latest object 를 pointing 하고 있다.<br/>
+<br/>
+@<br/>
+rm .git/refs/heads/exp 하면 branch 가 삭제된다.<br/>
+git branch 로 없어진것 확인 가능.<br/>
+<br/>
+@<br/>
+vim .git/refs/heads/exp file 만들고 commit link 를 적어주면 exp branch 가 다시 생성된다.<br/>
+<br/>
+branch 는 중요하고 강력하지만 일반 text file 하나일 뿐이다.<br/>
+<br/>
+@<br/>
+git checkout exp.<br/>
+HEAD file 이 바뀌어있다.<br/>
+refs/heads/exp 를 가리키고있다.<br/>
+refs/heads/exp 은 commit 을 가리킨다.<br/>
+<br/>
+@<br/>
+vim f2.txt.<br/>
+a.<br/>
+<br/>
+git add f2.txt.<br/>
+git commit -m "3"<br/>
+<br/>
+@<br/>
+HEAD 는 refs/heads/exp 를 가리킨다.<br/>
+refs/heads/exp 는 latest commit 인 3 을 가리킨다.<br/>
+<br/>
+@<br/>
+git checkout master.<br/>
+HEAD file 이 refs/heads/master 를 가리킨다.<br/>
+refs/heads/master 는 latest commit 을 가리킨다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - branch 충돌해결.<br/>
+<br/>
+@<br/>
+file 이 완전히 다르면 자동으로 합쳐진다.<br/>
+<br/>
+@<br/>
+master, exp branch 에 각각 common.txt 를 만든다.<br/>
+같은 부분을 수정해본다.<br/>
+function b(){}.<br/>
+function a(master){}.<br/>
+function c(){}.<br/>
+<br/>
+function b(){}.<br/>
+function a(exp){}.<br/>
+function c(){}.<br/>
+<br/>
+git checkout master.<br/>
+git merge exp.<br/>
+<br/>
+<br/>
+function b(){}.<br/>
+<<HEAD.<br/>
+function a(master){}.<br/>
+===.<br/>
+function a(exp){}.<br/>
+>>exp.<br/>
+function c(){}.<br/>
+<br/>
+<<HEAD.<br/>
+function a(master){}.<br/>
+===.<br/>
+에서 수정한 내용.<br/>
+<br/>
+function a(exp){}.<br/>
+>>exp.<br/>
+에서 수정한 내용.<br/>
+<br/>
+git 이 automerge 를 실패해했으니까 merge 를 manually process 하라고 conflict part 를 표시하면서 위임한다.<br/>
+<br/>
+<br/>
+이런식으로 수정해본다.<br/>
+function b(){}.<br/>
+function a(master, exp){}.<br/>
+function c(){}.<br/>
+<br/>
+:wq.<br/>
+<br/>
+git add common.txt.<br/>
+git commit.<br/>
+<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원리 : reset checkout.<br/>
+<br/>
+@<br/>
+git reset --hard commit-hash-value.<br/>
+commit-hash-value 로 latest commit 이 set 된다.<br/>
+<br/>
+refs/heads/master 가 수정된다.<br/>
+checkout 한 branch 인 master 가 어떤 latest commit 을 가지고 있는가 를 가리키는 file 이다.<br/>
+<br/>
+@<br/>
+reset 을 한다는 것은 checkout 하고 있는 branch 의 latest commit 을 바꾸는 행위라고 할 수 있다.<br/>
+file 이 너무 많을 때 garbage collector 가 돌아가면서 file 을 정리하는 경우를 제외하고는 더 뒤의 commit 들은 지워지지는 않는다.<br/>
+<br/>
+@<br/>
+reset 을 취소하고 싶을때는 ORIG_HEAD, logs/refs/heads/master 이다.<br/>
+<br/>
+@<br/>
+ORIG_HEAD 안의 link 를 click 하면 reset 으로 삭제된 commit 을 가리키고있다.<br/>
+<br/>
+@<br/>
+logs/refs/heads/master 를 보면 가장 밑에 내용이 xx1(reset 으로 삭제된 commit) xx2(reset 으로 latest commit 으로 된 commit) 이 xx3 가 되었다 가 적혀있다.<br/>
+<br/>
+Therefore, logs/refs/heads/master 는 master branch 에서 일어나는 important event 들을 record 해놓는 log 이다.<br/>
+<br/>
+@<br/>
+정보를 잃어버릴 가능성이 있는 명령을 실행하기 전에 git 은 ORIG_HEAD 라는 곳에 현재 branch 의 latest commit 을 record 한다.<br/>
+<br/>
+따라서, reset 을 cancel 할 수 있다.<br/>
+git reset --hard ORIG_HEAD.<br/>
+<br/>
+@<br/>
+ORIG_HEAD 보다 더 좋은 방법은 logs/refs/heads/master 을 보는 것이다.<br/>
+git reflog.<br/>
+commit 들을 보여준다.<br/>
+<br/>
+@<br/>
+git checkout commit-hash-value.<br/>
+git branch.<br/>
+* HEAD detached at 82kf.<br/>
+master.<br/>
+<br/>
+gistory 를 보면 바뀐 file 은 HEAD file 하나이다.<br/>
+우리가 봤던 HEAD 는 refs/heads/master file 을 가리켰다.<br/>
+위의 HEAD 는 직접 commit link 를 가리킨다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원리 : working copy&index&repository.<br/>
+<br/>
+@<br/>
+working directory(=working tree, working copy).<br/>
+실제 작업이 진행되는 directory.<br/>
+<br/>
+index(=staging area, cache).<br/>
+git add 를 했을 때 그것이 포함되는 곳.<br/>
+<br/>
+repository(=history, tree).<br/>
+실제 version, commit 들이 저장되는 곳.<br/>
+<br/>
+git reset --hard : 3군데 다 초기화됨.<br/>
+git reset --soft : repository 만 초기화됨.<br/>
+git reset --mixed : index, repository 만 초기화됨.<br/>
+<br/>
+@<br/>
+작업을 진행하다가 commit 하기전에 이 작업이 마음에 안들때 예전 상태로 돌아가고 싶을 때.<br/>
+git reset --hard 를 쓰기도 한다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원리 : merge & conflict.<br/>
+<br/>
+@<br/>
+git checkout -b exp : exp branch 만들면서 동시에 chceckout 까지 한다.<br/>
+<br/>
+master, exp branch 에서 같은 부분을 수정했다고 가정한다.<br/>
+<br/>
+in master, git merge exp : exp 것들 master 로 합친다.<br/>
+그런데 conflict 되어 auto merge failed.<br/>
+<br/>
+@<br/>
+go to gistory.<br/>
+index file 을 보면.<br/>
+xx1 1 f1.txt.<br/>
+xx2 2 f1.txt.<br/>
+xx3 3 f1.txt.<br/>
+<br/>
+이런식으로 conflict 가 occurred 하면 xx 뒤에 숫자가 붙는다.<br/>
+각각을 click 해 본다.<br/>
+1번인 f1.txt.<br/>
+는 내용이 common 이다.<br/>
+수정전에 공통으로 가지고 있었던 f1.txt 의 내용이다.<br/>
+<br/>
+xx2 2 f1.txt 를 click 해본다.<br/>
+master 로 수정된 내용을 볼 수 있다.<br/>
+<br/>
+xx3 3 f1.txt 를 click 해본다.<br/>
+병합이 될 대상인 exp 내용이 써져있다.<br/>
+<br/>
+이러한 3가지 정보를 바탕으로 3 way merge 라는 merge 가 이루어질 수 있다.<br/>
+<br/>
+@<br/>
+MERGE_HEAD 를 click 해 본다.<br/>
+merge 가 될 대상(exp) 의 latest commit 이다.<br/>
+<br/>
+@<br/>
+MERGE_MSG 는 merge 를 하는 과정에서 conflict 가 발생했는데 commit 을 할 때 보여줄 message 이다.<br/>
+<br/>
+@<br/>
+ORIG_HEAD 는 merge 는 위험한 작업이라서 그 이전으로 돌아가기 위한 일종의 back up 이다.<br/>
+<br/>
+@<br/>
+objects/34/xx4 는 충돌이 일어난 내용을 설명하는 file 이다.<br/>
+<br/>
+@<br/>
+merge 를 해주는 tool 이 있다.<br/>
+여기서는 kdiff3 를 사용해본다.<br/>
+<br/>
+git config --global merge.tool kiff3 를 해서 merge command 를 했을 때 kdiff3 가 실행되도록 한다.<br/>
+beyondcompare tool 을 쓴다면 git config --global merge.tool bc 를 하면 된다.<br/>
+<br/>
+@<br/>
+git mergetool 은 conflict file 에 대해서 mergetool 을 이용해서 merge 하도록 git 에게 commnad 한다.<br/>
+<br/>
+@<br/>
+kiff3 의 layout 은 다음과 같다.<br/>
+4칸으로 구분됨.<br/>
+왼쪽은 f1.txt(base) 이다.<br/>
+가운데는 f1.txt(local) 이다.<br/>
+오른쪽은 f1.txt(remote) 이다.<br/>
+밑에는 output directory 이다.<br/>
+<br/>
+@<br/>
+conflict 란 다음과 같다.<br/>
+common parent commit 이 있다.<br/>
+여기에서 master, exp branch 가 같은 곳을 수정하고 각각 commit 을 했다.<br/>
+이 둘은 수정내용은 다르지만 common parent commit 이 있다는 것이고 이것을 base 라고 부른다.<br/>
+local 은 checkout 되어 merge 되는 내용을 받는 쪽이다.<br/>
+<br/>
+A,B,C 를 누르면 각각 common, master, exp 가 채택되어 merge 된다.<br/>
+동시에 누를수도있다.<br/>
+다 누르면 common, master, exp 내용 전부다 merge 된다.<br/>
+<br/>
+master.exp 같은 내용으로 아래 칸에서 직접 수정할 수 도있다.<br/>
+<br/>
+그리고 저장한다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원리 : 3 way merge.<br/>
+<br/>
+@<br/>
+2way merge : base 는 보지 않고 me, other 만 비교하여 merge 하는 방법이다.<br/>
+3way merge : base 를 참고하여 me, other 을 merge 하는 방법이다.<br/>
+<br/>
+@<br/>
+<table>
+  <tr>
+    <th>me</th>
+    <th>other</th>
+    <th>2way merge</th>
+  </tr>
+  <tr>
+    <td>A</td>
+    <td></td>
+    <td>conflict</td>
+  </tr>
+  <tr>
+    <td>B</td>
+    <td>B</td>
+    <td>B</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>conflict</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>D</td>
+    <td>conflict</td>
+  </tr>
+</table>
+<br/>
+1, 2 같이 다른 경우는 auto merge 할때 뭐가 맞는지 알 수 없다.<br/>
+그래서 merger 에게 뭐가 맞는지 conflict 를 내야한다.<br/>
+공백, D 경우 내용이 없는게 수정된 사항인지 있는게 수정된 사항인지 알 수 없다.<br/>
+<br/>
+@<br/>
+<table>
+  <tr>
+    <th>me</th>
+    <th>base</th>
+    <th>other</th>
+    <th>3way merge</th>
+  </tr>
+  <tr>
+    <td>A</td>
+    <td>A</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>B</td>
+    <td>B</td>
+    <td>B</td>
+    <td>B</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>C</td>
+    <td>2</td>
+    <td>conflict</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>D</td>
+    <td>D</td>
+    <td></td>
+  </tr>
+</table>
+<br/>
+AA공백이면 me 는 수정하지 않았고 other 은 수정했다라는걸 알수있으므로 수정한것을 채택할 수 있다.<br/>
+세명이 같으므로 B.<br/>
+셋 모두 다르므로 conflict 를 낸다.<br/>
+공백DD 이므로 수정된 사항이 있음을 인지하고 이를 반영한다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원격 저장소 소개.<br/>
+<br/>
+@<br/>
+remote repository(ex, github, private common server), local repository.<br/>
+<br/>
+@<br/>
+remote repository : backup, coworking.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원격 저장소 생성.<br/>
+<br/>
+@<br/>
+git init --bare name-of-repository 은 작업은 할수없고 그냥 repository 역할만 할수 있는 option 이다.<br/>
+remote repository 를 만들때 사용한다.<br/>
+<br/>
+@<br/>
+git remote add address-of-remote-repository 는 local repository 와 remote repository 를 연결한다.<br/>
+경로를 길게 쓰기 번거로우므로 origin 을 사용하면 주의의 alias 가 된다.<br/>
+git remote add origin address-of-remote-repository.<br/>
+<br/>
+add 된 repository 를 지우고 싶으면 git remote remove origin 을 사용한다.<br/>
+<br/>
+@<br/>
+현재 local repository 에서 master branch 상태이다.<br/>
+git push 를 하면 master branch 의 내용을 remote repository 에 똑같은 이름의 branch 로 push 한다.<br/>
+<br/>
+push 방식(matching, simple 중에서)을 global 하게 설정하려면 git config --global push.default simple 을 사용한다.<br/>
+<br/>
+@<br/>
+git push --set-upstream origin master 은 push 할때 origin 주소에 master branch 로 push 한다.<br/>
+--set-upstream 을 써주면 앞으로 master branch 에서 push 를 하면 자동으로 origin 의 master 로 push 하도록 설정하는 것이다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - github 소개 (Github).<br/>
+<br/>
+@<br/>
+clone 방법.<br/>
+원하는 directory 로 이동한다.<br/>
+git clone address-of-remote-repository 하면 folder 가 생성되면서 clone 된다.<br/>
+혹은 git clone address-of-remote-repository folder-name 으로 folder 를 직접 만들면서 할 수 있다.<br/>
+<br/>
+@<br/>
+clone 한 folder 에서 git log 하면 commit history 를 볼 수 있다.<br/>
+<br/>
+git log --reverse 를 하면 거꾸로 log 를 볼 수 있다.<br/>
+<br/>
+첫번째 commit 의 code 를 보려면 commit hash value 를 copy 하고 q 로 나가서 git checkout commit-hash-value 를 하면 된다.<br/>
+그러면 current branch 가 이 commit 이 된다.<br/>
+<br/>
+그리고 ls -al 로 file 목록을 본다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원격 저장소 만들기 (Github).<br/>
+<br/>
+@<br/>
+두가지 상황이 있을 수 있다.<br/>
+<br/>
+상황1 : remote repository 를 만들고 이것을 clone 해서 local repository 를 만들고 여기에서 작업을 하는 방식.<br/>
+상황2 : local repository 에서 작업을 해왔다. 그리고 작업 내역을 remote repository 로 push 하고 싶을때.<br/>
+<br/>
+@<br/>
+상황2부터 보자.<br/>
+git remote add origin https://github.com/youngmtool/test.git.<br/>
+현재 local repository 에 remote repository (origin https://github.com/youngmtool/test.git) 를 연결(add) 시킨다.<br/>
+<br/>
+@<br/>
+git 은 여러개의 remote repository 를 하나의 local repository 에 연결시킬 수 있다.<br/>
+loca repository 에서 작업한걸 A or B 등으로 마음대로 push 할 수 있다.<br/>
+<br/>
+기본 branch 의 alias 가 master 인 것 처럼, origin 은 local repository 와 연결되어 있는 가장 기본적인 remote repository 의 alias 로 사용된다.<br/>
+<br/>
+@<br/>
+git 에서는 local repository 를 기준으로 얘기한다.<br/>
+<br/>
+내가 작업하는 local repository 에서 remote repository 로 작업을 보낼때 push 라고 표현한다.<br/>
+<br/>
+git push -u origin master 는 현재 checkout 되어있는 local repository 의 branch 의내용을 origin 에 해당하는 remote repository 의 master branch 에 push 한다는 의미이다.<br/>
+<br/>
+-u 는 한번만 쓰면 되는 option 으로서 local repository 의 branch 와 remote repository 의 master branch 를 서로 연결 시켜서 다음부터는 git push 만 쓰면 자동으로 위와 같이 push 되게 하는 option 이다.<br/>
+<br/>
+@<br/>
+위의 방법은 작업하고 있던 local repository 를 remote repository 로 옮기는 방식이며 backup 의 의미를 갖는다.<br/>
+<br/>
+@<br/>
+먼저 remote repository 에 자료가 있고 이걸 local repository 로 clone 방법은.<br/>
+원하는 folder 로 이동한 뒤.<br/>
+git clone address . 을 하면 되고, dot 을 써주면 현재 directory 를 가리킨다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 동기화 방법 (Github).<br/>
+<br/>
+@<br/>
+clone 을 git_home, git_office 두 군데에 해본다.<br/>
+<br/>
+git commit --amend 는 commit message 를 수정할 수 있다.<br/>
+remote repository 에 올리기 전에만 하는게 좋다.<br/>
+<br/>
+@<br/>
+git_home 에서 수정하고 remote repository 에 push 한다.<br/>
+<br/>
+@<br/>
+git_office 에서 (local repository 입장에서) remote repository 에 있는 내용을 pull 을 한다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - ssh를 이용해서 로그인없이 원격저장소 사용하기 (Github).<br/>
+      
    </BODY>
 </HTML>
