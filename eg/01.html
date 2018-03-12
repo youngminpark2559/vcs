@@ -1028,6 +1028,195 @@ git_office 에서 (local repository 입장에서) remote repository 에 있는 �
 <br/>
 @Chapter.<br/>
 지옥에서 온 Git - ssh를 이용해서 로그인없이 원격저장소 사용하기 (Github).<br/>
-      
+@<br/>
+clone 할때 https 주소를 사용하면 복잡한 설정없이 ip, password 를 입력해서 remote repository 에 push 할 수 있다.<br/>
+간편한 대신 push or connect to remote repository 할 때마다 id, password 를 입력해야했다.<br/>
+<br/>
+@<br/>
+Secure Shell 은 자동 로그인 수단은 아니다.<br/>
+http 같은 통신 protocol 종류이다.<br/>
+ssh 는 자동으로 login 해주는 기능을 제공하는 것이다.<br/>
+<br/>
+@<br/>
+ssh-keygen 을 실행한다.<br/>
+directory 를 note 한다.<br/>
+계속 enter 를 누르면 ssh 를 통해서 다른 computer 로 접속 할 수 있는 일종의 password 가 생성된다.<br/>
+hash function 을 이용해서 복잡한 password 가 생성된것이다.<br/>
+password 는 위에서 note 한 directory 에 id_rsa, id_rsa.pub 파일로 저장되었다.<br/>
+<br/>
+@<br/>
+id_rsa 는 private key 이다. my local computer 에 저장해 놓는다.<br/>
+id_rsa.pub 은 public key 이다. server 에 저장해 놓는다.<br/>
+<br/>
+@<br/>
+github 에 public key 저장하는 방법.<br/>
+<br/>
+@<br/>
+cat id_rsa.pub 을 실행해 key 를 copy 한다.<br/>
+github 에서 settting 가서 ssh and gpg keys 에 들어간다.<br/>
+title 에는 local repository 의 name 을 적는다.<br/>
+key 에 copied public key 를 paste 한다.<br/>
+<br/>
+@<br/>
+ssh address 를 copy 한다.<br/>
+local repository 없을때 github instruction commands 를 따른다.<br/>
+or 다음과 같이 한다.<br/>
+<br/>
+git clone ssh-address.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - 원격 저장소의 원리.<br/>
+<br/>
+@<br/>
+git remote add origin remote-repository.<br/>
+<br/>
+go to gistory.<br/>
+<br/>
+config file 이 modified 되었다.<br/>
+여기에 remote repository 정보가 들어있다.<br/>
+fetch 는 정보를 가져올 때 remote repository 의 어디에서 local repository 어디로 정보를 가져올 것인가 와 같은 정보이다.<br/>
+<br/>
+@<br/>
+push 해보자.<br/>
+git push.<br/>
+message 가 보인다.<br/>
+fatal : the current branch master has no upstream branch..<br/>
+To push the current branch and set the remote as upstream, use.<br/>
+git push --set-upstream origin master.<br/>
+<br/>
+upstream : local repository 에 연결되어있는 remote repository 라고 생각하면 된다.<br/>
+<br/>
+@<br/>
+git push --set-upstream origin master 을하면 두가지 일이 발생한다.<br/>
+<br/>
+1. local repository 의 master branch 를 remote repository 의 master branch 로 연결시킨다.<br/>
+1. code 들을 upload 한다.<br/>
+<br/>
+@<br/>
+config file 이 수정되었다.<br/>
+remote repository 에 관한 사항이다.<br/>
+branch "master" : local repository 의 branch 를 의미한다.<br/>
+remote = origin.<br/>
+merge=refs/heads/master.<br/>
+<br/>
+@<br/>
+refs/remotes/origin/master 를 보자.<br/>
+link 를 click 하면 origin 으로 push 한 user 의 정보가 적혀있다.<br/>
+<br/>
+@<br/>
+refs/heads/master 는 local repository 의 master branch 에 관한 정보를 담고있다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - pull VS fetch의 원리.<br/>
+<br/>
+@<br/>
+remote repository 에서 local repository 로 code 를 가져올때 2가지 방법이 있다.<br/>
+<br/>
+@<br/>
+git pull, git fetch 이다.<br/>
+<br/>
+@<br/>
+보통은 pull 을 쓰는데 정교함을 위해서 fetch 를 쓸때가 있다.<br/>
+<br/>
+@<br/>
+pull 을 하면 다음과 같다.<br/>
+<br/>
+@<br/>
+object link, 이름, 클릭하면 파일의 내용, 변경된 사항을 표시하는 commit history 가 다운로드 되었다.<br/>
+또한 refs/heads/master 를 보면 local repository 의 master branch 가 어떤 commit 을 가리키는가 를 적어놓은 file 이 바뀌었다.<br/>
+refs/remotes/origin/master 를 보면 remote repository 에서 master branch 의 commit 이 무엇을 가르키는지 보여준다.<br/>
+결론적으로, local branch 와 remote branch 가 똑같은 commit 을 가리키고 있다.<br/>
+<br/>
+@<br/>
+ORIG_HEAD 은 이전 commit 을 가리킨다.<br/>
+git pull 을 했는데 잘못 merge 된 case 라면 ORIG_HEAD 에 적혀있는 정보를 통해서 merge 이전의 상태로 돌릴수 있다.<br/>
+<br/>
+@<br/>
+git fetch.<br/>
+git log --decorate --all --oneline.<br/>
+<br/>
+local repository 의 master branch 는 아까와 똑같은 6 을 가리키고 있다.<br/>
+<br/>
+remote repository 의 master branch 는 office local repository 에서 push 한 7 을 가리키고 있다.<br/>
+<br/>
+즉, origin master 가 local master 를 앞서고 있는 상황이다.<br/>
+<br/>
+@<br/>
+즉, remote 에서 다운로드를 받는다.<br/>
+다운받은 commit 이 remote 에서 몇번인지도 받았다.<br/>
+하지만, local 의 master 에는 변화를 가하지 않았다.<br/>
+이것이 fetch 이동한다.<br/>
+<br/>
+@<br/>
+좋은점 : remote 에서 가져오고 merge 는 안한다.<br/>
+그래서 local 과 remote 의 차이점을 비교할 수 있다.<br/>
+그런다음 git merge origin/master 를 해서 local 의 master 로 merge 한다.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - tag 1 (기본 사용법).<br/>
+<br/>
+@<br/>
+github 에 release : source code 에서 사용자들에게 제공되어도 되는 각각의 의미있는 version 들을 모아놓은 곳이다.<br/>
+<br/>
+v2.12.0.<br/>
+e8e394 .<br/>
+<br/>
+release version v2.12.0 에 해당하는 commit version 은 e8e394 이다.<br/>
+<br/>
+@<br/>
+commit 을 할 때마다 master branch 의 latest commit 은 바뀌어야한다.<br/>
+<br/>
+v2.12.0.<br/>
+e8e394 .<br/>
+<br/>
+이와 같은 version commit 은 바뀌면 안된다.<br/>
+<br/>
+@<br/>
+tag 은 언제나 똑같은 commit 을 가르킨다.<br/>
+branch 는 항상 바뀐다.<br/>
+<br/>
+@<br/>
+현재 master 에서 xx1 을 가리키고 있다고 가정한다.<br/>
+이때, git tag 하면 1.0.0 version 이 tag 된다.<br/>
+<br/>
+이러한 방식은 light weight tag 이다.<br/>
+<br/>
+@<br/>
+tag 에 대한 정보를 포함하고 싶을때는.<br/>
+annotated tag 를 다음과 같이 쓴다.<br/>
+git tag -a 1.1.0 -m "bug fix".<br/>
+<br/>
+@<br/>
+git tab -v 1.1.0 을 치면 detailed information 이 나온다.<br/>
+<br/>
+@<br/>
+git push --tags 는 push 할 때 tag 정보도 같이 push 한다.<br/>
+그럼 github 에 release 가 생긴다.<br/>
+github 에서는 edit tag 를 할 수 도 있다.<br/>
+<br/>
+@<br/>
+tag 를 삭제하는 방법.<br/>
+git tag -d 1.1.0.<br/>
+<br/>
+@Chapter.<br/>
+지옥에서 온 Git - tag 2 (원리).<br/>
+<br/>
+@<br/>
+git tag 1.1.2.<br/>
+<br/>
+refs/tags/1.1.2 file 이 만들어진다.<br/>
+link 가 있다.<br/>
+click 하면 관련된 commit 이다.<br/>
+<br/>
+@<br/>
+직접 tag file 만들기.<br/>
+go to refs/tags.<br/>
+create 1.1.3 file.<br/>
+contents should be commit hash value.<br/>
+<br/>
+@<br/>
+annotated tag 는 addionally file 이 만들어진다.<br/>
+여기에 상세정보가 들어있다.<br/>
+            
    </BODY>
 </HTML>
