@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 23px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 80px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+img {
+ width:900px;
+}
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+038_use_SSH_connection_on_github_to_use_it_without_login_session
+
+# ======================================================================
+Secure Shell is not a tool for automatic login
+SSH is also protocol like HTML
+SSH just provides automatic login functionality as one of functionalities.
+
+# ======================================================================
+# Run
+ssh-keygen
+
+# result
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/young/.ssh/id_rsa):
+
+# Enter
+
+# Enter
+
+You could generate password (key pair file)
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:11:58.png"><xmp>
+
+Note these files: id_rsa (private key), id_rsa.pub (public key)
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:13:49.png"><xmp>
+
+# ======================================================================
+id_rsa (private key) file will be stored in your local PC.
+
+id_rsa.pub (public key) file will be stored in public server like github.
+
+# ======================================================================
+How to store your public key file into github?
+
+# Copy key string by running
+cat id_rsa.pub
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:18:48.png"><xmp>
+
+Go to github, go to setting, go to ssh and gpg keys
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:19:13.png"><xmp>
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:19:29.png"><xmp>
+
+Click "new SSH key"
+In "title", you write name of "local PC" like "home dev mac"
+In "key", you paste the copied publich key string
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:20:56.png"><xmp>
+
+Click "add SSH key"
+
+# ======================================================================
+Type
+add-ssh
+
+Copy ssh address
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:22:18.png"><xmp>
+
+git clone ssh-address
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:23:33.png"><xmp>
+
+Write yes
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_19:23:54.png"><xmp>
+
+
+
+</xmp>
+   </BODY>
+</HTML>
+
