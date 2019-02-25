@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 23px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 80px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+img {
+ width:900px;
+}
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+030_options_of_reset_and_internal_structure_of_git_system_working_directory_index_repository
+
+When you use "git reset",
+there are several options that you can use
+
+# ======================================================================
+git reset --help
+
+options: --soft, --mixed, --hard, --merge, --keep
+
+Most used options: --soft, --mixed, --hard
+
+# ======================================================================
+working directory (= working tree, working copy)
+directory where you're doing tasks
+
+index (= staging area, cache)
+place in which when you perform "add", data is stored
+
+repository (= history, tree)
+place in which version history, commits are stored
+
+# ====================================================================== 
+git reset --hard: reset 3 places 3군데 다 초기화됨
+git reset --soft: reset history in repository
+git reset --mixed: reset 2 places (repository, staging area)
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:48:07.png"><xmp>
+
+# ======================================================================
+# Initialize current directory
+git init
+
+vim f1.txt
+init
+
+git add f1.txt
+
+git commit -m "1"
+
+# ======================================================================
+vim f1.txt
+repository
+
+git commit -am "2"
+
+# ======================================================================
+vim f1.txt
+inex
+
+git add f1.txt
+
+git status 
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:51:34.png"><xmp>
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:52:04.png"><xmp>
+
+# ======================================================================
+vim f1.txt
+working copy
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:52:47.png"><xmp>
+
+# ======================================================================
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:53:35.png"><xmp>
+
+git reset --soft 65d9...
+
+git log
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:54:06.png"><xmp>
+
+git log -p
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:54:30.png"><xmp>
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:54:50.png"><xmp>
+
+# ======================================================================
+# To compare contents of working directory and contents of staging area
+git diff
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_18:55:22.png"><xmp>
+
+# ======================================================================
+git reset --soft ORIG_HEAD
+
+# ======================================================================
+As you're doing tasks, if you don't like that tasks,
+and if you want to go back to past code, run
+git reset --hard
+
+# ======================================================================
+In most cases, you will use git reset --hard
+
+But there can still be cases where --soft and --mixed are needed to use
+
+</xmp>
+   </BODY>
+</HTML>
+
+
+

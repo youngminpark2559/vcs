@@ -1191,25 +1191,99 @@ git checkout master
 /home/young/Pictures/2019_02_25_17:51:04.png
 
 # ======================================================================
-@ 지옥에서 온 Git - 원리 : working copy&index&repository
+@ 030_options_of_reset_and_internal_structure_of_git_system_working_directory_index_repository
+
+When you use "git reset",
+there are several options that you can use
 
 # ======================================================================
-working directory(=working tree, working copy)
-실제 작업이 진행되는 directory
+git reset --help
 
-index(=staging area, cache)
-git add 를 했을 때 그것이 포함되는 곳
+options: --soft, --mixed, --hard, --merge, --keep
 
-repository(=history, tree)
-실제 version, commit 들이 저장되는 곳
-
-git reset --hard : 3군데 다 초기화됨
-git reset --soft : repository 만 초기화됨
-git reset --mixed : index, repository 만 초기화됨
+Most used options: --soft, --mixed, --hard
 
 # ======================================================================
-작업을 진행하다가 commit 하기전에 이 작업이 마음에 안들때 예전 상태로 돌아가고 싶을 때
-git reset --hard 를 쓰기도 한다
+working directory (= working tree, working copy)
+directory where you're doing tasks
+
+index (= staging area, cache)
+place in which when you perform "add", data is stored
+
+repository (= history, tree)
+place in which version history, commits are stored
+
+# ====================================================================== 
+git reset --hard: reset 3 places 3군데 다 초기화됨
+git reset --soft: reset history in repository
+git reset --mixed: reset 2 places (repository, staging area)
+
+/home/young/Pictures/2019_02_25_18:48:07.png
+
+# ======================================================================
+# Initialize current directory
+git init
+
+vim f1.txt
+init
+
+git add f1.txt
+
+git commit -m "1"
+
+# ======================================================================
+vim f1.txt
+repository
+
+git commit -am "2"
+
+# ======================================================================
+vim f1.txt
+inex
+
+git add f1.txt
+
+git status 
+/home/young/Pictures/2019_02_25_18:51:34.png
+
+/home/young/Pictures/2019_02_25_18:52:04.png
+
+# ======================================================================
+vim f1.txt
+working copy
+
+/home/young/Pictures/2019_02_25_18:52:47.png
+
+# ======================================================================
+/home/young/Pictures/2019_02_25_18:53:35.png
+
+git reset --soft 65d9...
+
+git log
+/home/young/Pictures/2019_02_25_18:54:06.png
+
+git log -p
+/home/young/Pictures/2019_02_25_18:54:30.png
+
+/home/young/Pictures/2019_02_25_18:54:50.png
+
+# ======================================================================
+# To compare contents of working directory and contents of staging area
+git diff
+/home/young/Pictures/2019_02_25_18:55:22.png
+
+# ======================================================================
+git reset --soft ORIG_HEAD
+
+# ======================================================================
+As you're doing tasks, if you don't like that tasks,
+and if you want to go back to past code, run
+git reset --hard
+
+# ======================================================================
+In most cases, you will use git reset --hard
+
+But there can still be cases where --soft and --mixed are needed to use
 
 # ======================================================================
 @ 지옥에서 온 Git - 원리 : merge & conflict
