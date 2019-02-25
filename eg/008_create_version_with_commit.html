@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 23px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 80px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+img {
+ width:900px;
+}
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+003_create_version_with_commit
+
+======================================================================
+# To specify the member who writes versions, run
+git config --global user.name Name
+git config --global user.email Email
+
+If you commit, the project has new version
+which contains information of author.
+
+======================================================================
+# Run with writing commit message
+git commit
+
+which means new version is created
+
+======================================================================
+# To see various infomation about commit
+git log
+
+======================================================================
+You edit source file and run
+git status
+
+You will see the message like
+modified
+
+You can't proceed "commit" in this status
+
+You first should add f1.txt file into the list 
+for which git tracks version by running
+git add f1.txt
+
+When you create a new file,
+to let git to track version of this file,
+you should first use 
+git add
+
+When you create a new version
+from the file which is being tracked in version,
+you first should use
+git add
+
+Then, you can do
+git commit
+
+</xmp>
+   </BODY>
+</HTML>
+
