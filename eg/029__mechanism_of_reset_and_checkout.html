@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 23px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 80px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+img {
+ width:900px;
+}
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+029__mechanism_of_reset_and_checkout
+
+# In empty new directory, run
+git init
+
+vim f1.txt
+a
+
+git add f1.txt
+
+git commit -m "1"
+
+# ======================================================================
+vim f1.txt
+a
+b
+
+git commit -am "2"
+
+# ======================================================================
+vim f1.txt
+a
+b
+c
+
+git commit -am "3"
+
+# ======================================================================
+vim f1.txt
+a
+b
+c
+d
+
+git commit -am "4"
+
+# ======================================================================
+git log
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:32:46.png"><xmp>
+
+Suppose you want to go back to "commit 3"
+and you want to cancel (or delete) "commit 4"
+
+# ======================================================================
+Copy commit ID of "commit 3"
+
+git reset --hard commit_3_id
+
+git log
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:34:47.png"><xmp>
+
+# ======================================================================
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:35:14.png"><xmp>
+
+refs/heads/master file contains contents 
+which point to latest commit in master branch in which you're in
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:36:29.png"><xmp>
+
+# ======================================================================
+Workflow
+
+Git opens ./.git/HEAD file
+
+Git opens refs/heads/master file
+
+Git knows latest commit
+
+# ======================================================================
+Reset is the act of change point refernce to the commit
+
+# ======================================================================
+Where is "commit 4"?
+
+Git generally doesn't delete files except for very special cases 
+where garbage collector runs on too many files,
+which happnes rarely.
+
+# ======================================================================
+What if you cancel "reset"?
+
+Let's see ./.git/ORIG_HEAD file
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:40:10.png"><xmp>
+
+It has "commit 4"
+
+./.git/ORIG_HEAD file writes latest commit in current branch
+before performing dangerous command
+
+# ======================================================================
+Let's see ./.git/logs/refs/heads/master file
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:41:23.png"><xmp>
+
+./.git/logs/refs/heads/master file writes various actions happened in master branch
+
+# ======================================================================
+# You can cancel "reset"
+git reset --hard ORIG_HEAD
+
+git log
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:44:39.png"><xmp>
+
+# ======================================================================
+Better way than using ORIG_HEAD is to see logs/refs/heads/master
+where more and various data are written
+
+# To use logs/refs/heads/master file
+git reflog
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:45:52.png"><xmp>
+
+# ======================================================================
+git checkout commit_id
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:47:17.png"><xmp>
+
+git branch
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:47:41.png"><xmp>
+
+git log
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:48:07.png"><xmp>
+
+# ======================================================================
+If you see gistory, changed file is HEAD file
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:48:27.png"><xmp>
+
+Previously, HEAD file pointed to refs/heads/master file
+current HEAD file points to commit id
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:49:47.png"><xmp>
+
+Your HEAD points to commit than branch
+This status is "detached"
+
+git checkout master
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_25_17:51:04.png"><xmp>
+
+
+      
+</xmp>
+   </BODY>
+</HTML>
+
+
