@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 23px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 80px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+img {
+ width:900px;
+}
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+
+042_how_to_connect_your_local_repository_to_remote_repository
+
+Create a local repository
+Create a remote repository on the Github
+Let's connect them, and let's see what internally happens
+
+Let's also see what internally happens when you perform "push"
+
+======================================================================
+# Create local repository named repo
+git init repo
+
+cd repo
+
+======================================================================
+vim f1.txt
+a
+
+git add f1.txt
+
+git commit -m "1"
+
+======================================================================
+Create a remote repository named repo on Github
+
+Copy SSH address of your remote repository
+
+======================================================================
+# remote has functionalities related to remote repository
+# add: connects remote repository to local repository
+# origin: name of remote repository you will use
+git remote add origin ssh_address_of_remote-repository
+
+======================================================================
+go to gistory
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_08:59:01.png"><xmp>
+
+data about remote named "origin" is stored in ./.git/config
+address of "origin" is stored in url
+when you bring data, where will you bring data from your remote repository, 
+and where will you store that data to in your local repository
+
+======================================================================
+# Check current branch
+git branch
+* master
+
+# Let's try to push "tasks" you did in the local repository into the remote repository
+git push
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:02:35.png"><xmp>
+
+# Meaning: current branch named "master" has no upstream branch,
+# so you need to run
+# origin: repository
+# master: branch
+git push --set-upstream origin master
+
+upstream: can be considered as remote repository which is connected to local repository
+
+======================================================================
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:05:47.png"><xmp>
+
+Above command does 2 following:
+1. master branch of local repository is connected to master branch of remote repository
+1. upload codes
+
+======================================================================
+./.git/config file has been changed
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:07:17.png"><xmp>
+
+branch called "master" is newly stored.
+
+======================================================================
+refs/remotes/origin/master file has been created
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:09:31.png"><xmp>
+
+======================================================================
+refs/heads/master contains information of master branch of local repository
+
+======================================================================
+Commit which is pointed by refs/heads/master file
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:10:44.png"><xmp>
+
+======================================================================
+# --decorate: to see detailed infomation
+# --graph: to see information in illustration
+git log --decorate --graph
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:12:25.png"><xmp>
+
+"Current branch master in local repository"
+and "master branch in remote repository" which is connected to local master branch
+are pointing to same commit 
+
+======================================================================
+vim f1.txt
+a
+b
+
+git commit -am 2
+
+vim f1.txt
+a
+b
+c
+
+git commit -am 3
+
+======================================================================
+git log --decorate --graph
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:15:00.png"><xmp>
+
+In local repository had performed "2 number of commits"
+
+Since you're before "push", origin/master branch has still "1 commit"
+
+How about infomation can be told to you?
+
+It's because git stores relevant data
+
+======================================================================
+commit which is pointed by ./.git/refs/heads/master file
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:16:44.png"><xmp>
+
+commit which is pointed by ./.git/refs/remotes/origin/master file
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:17:31.png"><xmp>
+
+======================================================================
+git push
+
+you will not see "you should perform set stream command"
+because you connected 2 branches of local and remote repositories
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:19:28.png"><xmp>
+
+======================================================================
+Commit which is pointed by ./.git/refs/remotes/origin/master file
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:20:03.png"><xmp>
+
+======================================================================
+git log --decorate --graph
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:20:41.png"><xmp>
+
+</xmp>
+   </BODY>
+</HTML>

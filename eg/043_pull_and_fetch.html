@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 23px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 80px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+img {
+ width:900px;
+}
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+043_pull_and_fetch
+
+======================================================================
+There are 2 ways which you can use 
+when you bring data from remote repository to local repositories
+
+They're git pull and git fetch
+
+======================================================================
+Create 2 local repositories (home and office) 
+which share same remote repository (repo)
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:26:32.png"><xmp>
+
+======================================================================
+Suppose this situation
+where you push "tasks" into "repo" remote repository
+and where you need to bring data from "repo" remote repository
+
+In that situation, you can use "pull" or "fetch"
+
+======================================================================
+You generally can use "pull"
+
+But when you need elaboration, you need to use "fetch"
+
+======================================================================
+# At dev/git/office master
+vim f1.txt
+a
+b
+c
+d
+e
+d
+
+git commit -am 6
+
+# Upload your task onto remote repository
+git push
+
+======================================================================
+# At dev/git/home master
+git pull
+
+When you perform "pull", you will see following
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:31:25.png"><xmp>
+
+======================================================================
+Let's see what internally happened
+
+# --all: to see logs against all branches
+# --oneline: to see logs in oneline
+git log --decorate --all c
+
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:32:59.png"><xmp>
+
+HEAD->master branch and origin/master branch point to same commit (6)
+
+======================================================================
+file you wrote just ago
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:34:42.png"><xmp>
+
+name of file you edited just ago
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:35:32.png"><xmp>
+
+commit you did just ago
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:35:56.png"><xmp>
+
+======================================================================
+./.git/refs/heads/master file
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:36:27.png"><xmp>
+
+./.git/refs/remotes/origin/master file
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:37:02.png"><xmp>
+
+They point same commit.
+
+======================================================================
+./.git/ORIG_HEAD file is pointing to
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_09:37:50.png"><xmp>
+
+======================================================================
+# At dev/git/office master
+vim f1.txt
+a
+b
+c
+d
+e
+d
+f
+
+git commit -am 7
+
+git push
+
+======================================================================
+# at dev/git/home master
+git fetch
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_10:34:40.png"><xmp>
+
+======================================================================
+git log --decorate --all --oneline
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_10:35:01.png"><xmp>
+
+master branch of local repository (HEAD->master) is pointing to "commit 6"
+
+master branch of origin remote repository (origin/master) is pointing to "commit 7"
+
+That is, step of remote repository (origin/master) is further 
+than local repository (HEAD->masster)
+
+======================================================================
+You downloaded following data
+
+"commit 7"
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_10:38:27.png"><xmp>
+
+file name
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_10:38:59.png"><xmp>
+
+file contents
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_10:39:16.png"><xmp>
+
+./.git/refs/remotes/origin/master is pointing to "commit 7"
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_10:39:58.png"><xmp>
+
+======================================================================
+On the other hand, 
+./.git/refs/heads/master is pointing to "commit 6"
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_10:40:38.png"><xmp>
+
+======================================================================
+What you have done so far with "fetch" is 
+that 
+1. you download data from remote repository to dev/git/home local repository
+1. you also downloaded "commits" from remote repository
+1. but you didn't apply those downloaded "commits" 
+to dev/git/home local repository yet
+
+======================================================================
+advantages:
+1. you bring data from remote repositories
+but you don't automatically perform "merge"
+so, you can compare "status of dev/git/home local repository"
+to "status of origin/master remote repository"
+by using following commands
+
+git log --decorate --all --oneline
+
+HEAD means latest commit of HEAD of your local repository
+git diff HEAD origin/master
+
+# f is added in origin/master
+</xmp><img src="https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/pics/2019_02_28_10:47:49.png"><xmp>
+
+======================================================================
+Then, you can run "git merge origin/master"
+to merge "origin/master" into master branch of dev/git/home local repository
+
+</xmp>
+   </BODY>
+</HTML>
+
