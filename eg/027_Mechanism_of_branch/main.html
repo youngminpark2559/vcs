@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+https://www.youtube.com/watch?v=WH6XJvUbxTI&list=PLuHgQVnccGMA8iwZwrGyNXCGy2LAAsTXk&index=28&t=62s
+
+================================================================================
+git init
+
+/home/young/Pictures/2019_06_28_08:20:58.png
+
+/home/young/Pictures/2019_06_28_08:21:20.png
+
+================================================================================
+vim f1.txt
+
+a
+
+git add f1.txt
+
+git commit -m "1"
+
+================================================================================
+/home/young/Pictures/2019_06_28_08:22:43.png
+
+================================================================================
+vim f1.txt
+
+/home/young/Pictures/2019_06_28_08:23:31.png
+
+/home/young/Pictures/2019_06_28_08:23:44.png
+
+git commit -am "2"
+
+/home/young/Pictures/2019_06_28_08:24:25.png
+
+================================================================================
+git branch exp
+
+/home/young/Pictures/2019_06_28_08:39:46.png
+
+git branch
+
+/home/young/Pictures/2019_06_28_08:40:10.png
+
+================================================================================
+rm .git/refs/heads/exp
+
+git branch
+/home/young/Pictures/2019_06_28_08:40:49.png
+
+================================================================================
+git log
+
+/home/young/Pictures/2019_06_28_08:42:50.png
+
+vim .git/refs/heads/exp
+
+/home/young/Pictures/2019_06_28_08:42:17.png
+
+================================================================================
+git branch
+
+/home/young/Pictures/2019_06_28_08:42:33.png
+
+================================================================================
+git checkout exp
+
+/home/young/Pictures/2019_06_28_08:44:25.png
+
+================================================================================
+vim f2.txt
+
+a
+
+================================================================================
+git add f2.txt
+
+git commit -m "3"
+
+/home/young/Pictures/2019_06_28_08:46:03.png
+
+================================================================================
+git checkout master
+
+/home/young/Pictures/2019_06_28_08:46:39.png
+
+================================================================================
+git log --branches --decorate --graph
+
+/home/young/Pictures/2019_06_28_08:47:55.png
+
+</xmp>
+   </BODY>
+</HTML>
