@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+https://www.youtube.com/watch?v=IU2ByZ-V26Y&list=PLuHgQVnccGMA8iwZwrGyNXCGy2LAAsTXk
+
+================================================================================
+mkdir test
+git init
+gistory
+
+/home/young/Pictures/2019_06_27_16:39:41.png
+
+================================================================================
+/home/young/Pictures/2019_06_27_16:40:26.png
+
+================================================================================
+Open new terminal
+
+cd test
+
+vim f1.txt
+
+# Insert a
+
+/home/young/Pictures/2019_06_27_16:41:47.png
+
+There's no changes because "adding a file" is regardless of Git
+
+================================================================================
+git add f1.txt
+
+/home/young/Pictures/2019_06_27_16:44:23.png
+
+/home/young/Pictures/2019_06_27_16:45:08.png
+
+/home/young/Pictures/2019_06_27_16:45:36.png
+
+/home/young/Pictures/2019_06_27_16:46:37.png
+
+================================================================================
+vim f2.txt
+
+/home/young/Pictures/2019_06_27_16:47:34.png
+
+git add f2.txt
+
+================================================================================
+/home/young/Pictures/2019_06_27_16:48:04.png
+
+/home/young/Pictures/2019_06_27_16:48:28.png
+
+================================================================================
+cp f1.txt f3.txt
+
+git add f3.txt
+
+/home/young/Pictures/2019_06_27_16:49:29.png
+
+/home/young/Pictures/2019_06_27_16:49:50.png
+
+Point: even if the file name is different, 
+if the contents of the file are the same, Git points to same object file (7898...)
+
+Advantage of it:
+- Suppose 10000 files, each one is 10GB
+- In index, there are 10000 number of file name, like f1.txt, f2.txt, f3.txt
+/home/young/Pictures/2019_06_27_16:52:57.png
+- But 10000 number of files point to same one object file like 7898...
+/home/young/Pictures/2019_06_27_16:53:53.png
+
+================================================================================
+If contents is same, object file name is same
+
+</xmp>
+   </BODY>
+</HTML>
