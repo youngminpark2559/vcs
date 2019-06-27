@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+https://www.youtube.com/watch?v=Qp927R-Xu1c&list=PLuHgQVnccGMA8iwZwrGyNXCGy2LAAsTXk
+
+================================================================================
+There are 2 advantages on the created versions.
+
+1. You can see "differences on each version of project" and you can see "specific past version".
+
+2. You can go back to any state of project
+
+================================================================================
+You can pass options to "git log"
+
+# print the differences on 2 commits-based code
+# using information from each commit
+git log -p 
+
+# version 4
++++ b/f1.txt
+# version 3
+--- a/f1.txt
+
++f1.txt : 2
+version 4 에서의 내용
+
+-source : 2
+version 3 에서의 내용
+
+--- /dev/null
+이전 version 의 내용 : 파일이 없었음
++++ b/f2.txt
+위의 version 의 다음 version 의 내용
+
+================================================================================
+# print all previous commits
+git log hash-value-of-commit
+
+================================================================================
+# print the difference on 2 codes
+git diff hash-value-of-commit1 hash-value-of-commit2
+
+================================================================================
+# You edit code, save code, run
+git diff
+
+then you'll see history of changes you did just ago
+
+"git diff" is useful when you review before commit
+
+</xmp>
+   </BODY>
+</HTML>
