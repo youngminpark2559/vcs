@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+www.youtube.com/watch?v=ArNd5sSwD04&list=PLuHgQVnccGMA8iwZwrGyNXCGy2LAAsTXk&index=25
+
+================================================================================
+git init
+
+vim f1.txt
+
+a
+
+git add f1.txt
+
+git commit -m 1
+
+
+================================================================================
+git checkout -b exp
+
+vim f1.txt
+
+/home/young/Pictures/2019_06_27_21:44:05.png
+
+/home/young/Pictures/2019_06_27_21:44:14.png
+
+================================================================================
+git checkout master
+
+/home/young/Pictures/2019_06_27_21:44:42.png
+
+git status
+
+/home/young/Pictures/2019_06_27_21:44:58.png
+
+"Edited f1.txt" affects "master branch"
+
+================================================================================
+git checkout exp
+
+git status
+
+/home/young/Pictures/2019_06_27_21:45:47.png
+
+/home/young/Pictures/2019_06_27_21:46:28.png
+
+================================================================================
+git stash
+
+/home/young/Pictures/2019_06_27_21:46:48.png
+
+================================================================================
+git status
+
+/home/young/Pictures/2019_06_27_21:47:31.png
+
+================================================================================
+vim f1.txt
+
+/home/young/Pictures/2019_06_27_21:47:48.png
+
+================================================================================
+git checkout master
+
+Do some tasks
+
+================================================================================
+git checkout exp
+
+git stash apply
+/home/young/Pictures/2019_06_27_21:48:52.png
+
+================================================================================
+vim f1.txt
+
+/home/young/Pictures/2019_06_27_21:49:10.png
+
+================================================================================
+
+git stash list
+
+</xmp>
+   </BODY>
+</HTML>
