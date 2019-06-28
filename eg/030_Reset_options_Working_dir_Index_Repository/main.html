@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+https://www.youtube.com/watch?v=P-EJ-Tkb5FM&list=PLuHgQVnccGMA8iwZwrGyNXCGy2LAAsTXk
+
+================================================================================
+git init
+
+vim f1.txt
+
+a
+
+git add f1.txt
+
+git commit -m "1"
+
+================================================================================
+vim f1.txt
+
+a
+b
+
+git add f1.txt
+
+git commit -m "2"
+
+================================================================================
+vim f1.txt
+
+a
+b
+c
+
+git add f1.txt
+
+git commit -m "3"
+
+================================================================================
+vim f1.txt
+
+a
+b
+c
+d
+
+git add f1.txt
+
+git commit -m "4"
+
+================================================================================
+git log
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:25:10.png' alt=''><xmp>
+
+================================================================================
+Go back to commit 3, and remove commit 4
+
+git reset --hard 93c9
+
+git log
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:26:17.png' alt=''><xmp>
+
+================================================================================
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:26:54.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:27:15.png' alt=''><xmp>
+
+================================================================================
+Cancel "reset which deleted commit 4"
+
+================================================================================
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:28:24.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:28:42.png' alt=''><xmp>
+
+================================================================================
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:29:40.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:30:07.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:30:23.png' alt=''><xmp>
+
+================================================================================
+git reset --hard ORIG_HEAD
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:31:28.png' alt=''><xmp>
+
+git log
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:31:38.png' alt=''><xmp>
+
+================================================================================
+git reflog
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:32:12.png' alt=''><xmp>
+
+================================================================================
+git log
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:33:23.png' alt=''><xmp>
+
+git checkout 93c9
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:33:46.png' alt=''><xmp>
+
+git branch
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:34:05.png' alt=''><xmp>
+
+================================================================================
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:34:39.png' alt=''><xmp>
+
+================================================================================
+git checkout master
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:35:33.png' alt=''><xmp>
+
+</xmp>
+   </BODY>
+</HTML>
