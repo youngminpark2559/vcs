@@ -50,117 +50,89 @@ MathJax.Hub.Config({
    </HEAD>
    <BODY>
 <xmp>
-https://www.youtube.com/watch?v=P-EJ-Tkb5FM&list=PLuHgQVnccGMA8iwZwrGyNXCGy2LAAsTXk
+https://www.youtube.com/watch?v=4pw4RUaCo0Y&list=PLuHgQVnccGMA8iwZwrGyNXCGy2LAAsTXk&index=30
+
+================================================================================
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:20:36.png' alt=''><xmp>
+
+Working directory: directory where you are editing your code
+
+Index: after you perform "add"
+
+Repository: after you perform "commit" 
+
+================================================================================
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:21:58.png' alt=''><xmp>
+
+================================================================================
+Red cell: effect range
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:22:20.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:22:43.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:22:58.png' alt=''><xmp>
 
 ================================================================================
 git init
 
 vim f1.txt
 
-a
+init
 
 git add f1.txt
 
-git commit -m "1"
+git commit -m 1
 
 ================================================================================
 vim f1.txt
 
-a
-b
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:24:27.png' alt=''><xmp>
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:24:42.png' alt=''><xmp>
 
-git add f1.txt
+git commit -am 2
 
-git commit -m "2"
+================================================================================
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:27:33.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:28:19.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:28:37.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:29:00.png' alt=''><xmp>
 
 ================================================================================
 vim f1.txt
 
-a
-b
-c
+index
 
 git add f1.txt
 
-git commit -m "3"
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:31:39.png' alt=''><xmp>
 
 ================================================================================
 vim f1.txt
 
-a
-b
-c
-d
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:32:09.png' alt=''><xmp>
 
-git add f1.txt
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:32:19.png' alt=''><xmp>
 
-git commit -m "4"
+================================================================================
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:33:25.png' alt=''><xmp>
 
 ================================================================================
 git log
 
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:25:10.png' alt=''><xmp>
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:34:11.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:34:29.png' alt=''><xmp>
+
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:34:43.png' alt=''><xmp>
 
 ================================================================================
-Go back to commit 3, and remove commit 4
+git log -p
 
-git reset --hard 93c9
-
-git log
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:26:17.png' alt=''><xmp>
-
-================================================================================
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:26:54.png' alt=''><xmp>
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:27:15.png' alt=''><xmp>
-
-================================================================================
-Cancel "reset which deleted commit 4"
-
-================================================================================
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:28:24.png' alt=''><xmp>
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:28:42.png' alt=''><xmp>
-
-================================================================================
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:29:40.png' alt=''><xmp>
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:30:07.png' alt=''><xmp>
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:30:23.png' alt=''><xmp>
-
-================================================================================
-git reset --hard ORIG_HEAD
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:31:28.png' alt=''><xmp>
-
-git log
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:31:38.png' alt=''><xmp>
-
-================================================================================
-git reflog
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:32:12.png' alt=''><xmp>
-
-================================================================================
-git log
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:33:23.png' alt=''><xmp>
-
-git checkout 93c9
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:33:46.png' alt=''><xmp>
-
-git branch
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:34:05.png' alt=''><xmp>
-
-================================================================================
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:34:39.png' alt=''><xmp>
-
-================================================================================
-git checkout master
-
-</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/029_Go_back_to_past_code_using_reset_and_checkout/pics/2019_06_28_09:35:33.png' alt=''><xmp>
+</xmp><img src='https://raw.githubusercontent.com/youngminpark2559/vcs/master/eg/030_Reset_options_Working_dir_Index_Repository/pics/2019_06_28_10:35:09.png' alt=''><xmp>
 
 </xmp>
    </BODY>
