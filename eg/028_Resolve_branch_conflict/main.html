@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>My first HTML document</TITLE>
+      <style rel="stylesheet" type="text/css">
+body {
+ font-size: 20px;
+ 
+ margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+    margin-left: 100px;
+    
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    
+    line-height:35px;
+}
+/* img {
+ width:900px;
+} */
+</style>
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS" : {
+        availableFonts : ["STIX"],
+        preferredFont : "STIX",
+        webFont : "STIX-Web",
+        imageFont : null
+    }
+});
+</script>
+     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
+   </HEAD>
+   <BODY>
+<xmp>
+https://www.youtube.com/watch?v=KvjaUXMuf-8&list=PLuHgQVnccGMA8iwZwrGyNXCGy2LAAsTXk&index=28
+
+================================================================================
+git branch exp
+
+vim master.txt
+a
+
+git add master.txt
+git commit -m "6"
+
+================================================================================
+git checkout exp
+
+vim exp.txt
+
+a
+
+git add exp.txt
+git commit -m "7"
+
+================================================================================
+git log
+
+/home/young/Pictures/2019_06_28_08:55:28.png
+
+git merge exp
+
+/home/young/Pictures/2019_06_28_08:56:04.png
+
+git log
+
+/home/young/Pictures/2019_06_28_08:56:25.png
+
+================================================================================
+git checkout exp
+
+vim common.txt
+
+function a(){
+}
+
+git add common.txt
+git commit -m "8"
+
+git checkout master
+
+git merge exp
+
+================================================================================
+In master branch
+
+vim common.txt
+
+/home/young/Pictures/2019_06_28_09:05:44.png
+
+/home/young/Pictures/2019_06_28_09:06:01.png
+
+git commit -am "9"
+
+================================================================================
+git checkout exp
+
+vim common.txt
+
+/home/young/Pictures/2019_06_28_09:06:44.png
+
+/home/young/Pictures/2019_06_28_09:06:56.png
+
+git commit -am "10"
+
+================================================================================
+git checkout master
+
+git merge exp
+
+vim common.txt
+/home/young/Pictures/2019_06_28_09:07:55.png
+
+================================================================================
+/home/young/Pictures/2019_06_28_09:08:36.png
+
+git checkout exp
+
+/home/young/Pictures/2019_06_28_09:08:54.png
+
+================================================================================
+git merge master
+
+/home/young/Pictures/2019_06_28_09:09:31.png
+
+================================================================================
+git checkout master
+
+vim common.txt
+
+/home/young/Pictures/2019_06_28_09:10:16.png
+
+/home/young/Pictures/2019_06_28_09:10:28.png
+
+git commit -am '11'
+
+================================================================================
+git checkout exp
+
+vim common.txt
+
+/home/young/Pictures/2019_06_28_09:11:12.png
+
+/home/young/Pictures/2019_06_28_09:11:23.png
+
+git commit -am '12'
+
+================================================================================
+git checkout master
+
+git merge exp
+
+/home/young/Pictures/2019_06_28_09:12:03.png
+
+git status 
+
+/home/young/Pictures/2019_06_28_09:12:21.png
+
+================================================================================
+/home/young/Pictures/2019_06_28_09:13:25.png
+
+/home/young/Pictures/2019_06_28_09:13:36.png
+
+/home/young/Pictures/2019_06_28_09:14:39.png
+
+git add common.txt
+
+git status
+/home/young/Pictures/2019_06_28_09:15:07.png
+
+================================================================================
+git commit
+
+/home/young/Pictures/2019_06_28_09:15:49.png
+
+git log
+
+/home/young/Pictures/2019_06_28_09:16:08.png
+
+================================================================================
+vim common.txt
+
+/home/young/Pictures/2019_06_28_09:16:30.png
+
+</xmp>
+   </BODY>
+</HTML>
